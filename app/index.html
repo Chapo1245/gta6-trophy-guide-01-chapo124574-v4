@@ -1,84 +1,110 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LEONIDA LEDGER — GTA 6 Trophy Guide &amp; Tracker</title>
-<meta name="description" content="Offline guide and tracker for all 55 GTA 6 PlayStation 5 trophies: a roadmap to the platinum, the 15 missable trophies flagged, and a cited guide for every trophy.">
+<title>Leonida Ledger — GTA 6 Trophy Guide &amp; Tracker</title>
+<meta name="description" content="An offline guide and tracker for all 55 GTA 6 trophies: checklist, roadmap to the platinum, missables, and collectibles — with cited guides in our own words.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <header class="masthead">
-  <div class="mast-inner">
-    <div class="mast-title">
-      <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; An offline field guide</p>
-      <h1>LEONIDA LEDGER</h1>
-      <p class="sub">All 55 official trophies — name, description and grade — with a tracker that remembers, a roadmap to the platinum, the 15 missable trophies flagged, and a guide for each trophy in our own words, with its source named.</p>
-    </div>
-    <div class="mast-progress">
-      <p class="big" id="progressLine">0 of 55 earned</p>
-      <div class="bar"><div id="barFill"></div></div>
-      <p class="counts" id="gradeCounts"></p>
-      <p class="next" id="nextUp"></p>
-    </div>
+  <div class="masthead-text">
+    <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; 55 trophies</p>
+    <h1>Leonida Ledger</h1>
+    <p class="lede">Every trophy, its official description, and a guide in our own words that cites its sources — plus a tracker that saves your progress, a six-phase road to the platinum, and the missables flagged before they can slip away.</p>
+    <p class="facts">Platinum 4/10 &middot; about 200 hours &middot; one playthrough &middot; no mission replay &middot; free-roam after the story &middot; cheats disable trophies. <span class="fact-source">Difficulty and time: PowerPyx.</span></p>
   </div>
-  <nav class="tabs" aria-label="Views">
-    <button type="button" data-view="tracker" class="active">Tracker</button>
-    <button type="button" data-view="roadmap">Roadmap to Platinum</button>
-    <button type="button" data-view="missables">Missables <span class="pill" id="missCount"></span></button>
-    <button type="button" data-view="collectibles">Collectibles</button>
-  </nav>
+  <aside class="progress-box" aria-label="Progress">
+    <p class="progress-big"><span id="earned-count">0</span><span class="progress-of"> / 55 earned</span></p>
+    <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="55" aria-valuenow="0" id="progress-bar"><span id="progress-fill"></span></div>
+    <p class="progress-pct" id="progress-pct">0% to the platinum</p>
+    <ul class="grade-counts">
+      <li><span class="dot dot-platinum"></span>Platinum <b id="count-platinum">0/1</b></li>
+      <li><span class="dot dot-gold"></span>Gold <b id="count-gold">0/2</b></li>
+      <li><span class="dot dot-silver"></span>Silver <b id="count-silver">0/6</b></li>
+      <li><span class="dot dot-bronze"></span>Bronze <b id="count-bronze">0/46</b></li>
+    </ul>
+    <p class="progress-next" id="next-up">Next up: finish the story, Chapter 1.</p>
+  </aside>
 </header>
 
+<nav class="tabs" aria-label="Sections">
+  <a href="#tracker" data-tab="tracker" class="tab active">Tracker</a>
+  <a href="#roadmap" data-tab="roadmap" class="tab">Roadmap to Platinum</a>
+  <a href="#missables" data-tab="missables" class="tab">Missables <span class="tab-badge">15</span></a>
+  <a href="#collectibles" data-tab="collectibles" class="tab">Collectibles</a>
+</nav>
+
 <main>
-  <section id="view-tracker" class="view">
-    <div class="controls">
-      <label>Search <input id="search" type="search" placeholder="Trophy, mission or keyword…"></label>
-      <label>Grade <select id="grade"><option value="all">All grades</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-      <div class="chips" role="group" aria-label="Filter by kind">
-        <button type="button" data-kind="all" class="chip active">All</button>
-        <button type="button" data-kind="story" class="chip">Story</button>
-        <button type="button" data-kind="missable" class="chip">Missable</button>
-        <button type="button" data-kind="collectible" class="chip">Collectibles</button>
-        <button type="button" data-kind="activity" class="chip">Activities</button>
-        <button type="button" data-kind="earned" class="chip">Earned ✓</button>
-        <button type="button" data-kind="todo" class="chip">Still to do</button>
-      </div>
-      <label class="toggle"><input id="spoiler" type="checkbox"> Spoiler-safe: hide story trophies until earned</label>
-      <div class="io">
-        <button id="export" type="button">Export progress</button>
-        <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-        <button id="reset" type="button">Reset</button>
-      </div>
+  <section id="tab-tracker" class="panel">
+    <div class="toolbar">
+      <label class="search">Search <input id="search" type="search" placeholder="Trophy name or word from its guide…" autocomplete="off"></label>
+      <label>Kind
+        <select id="filter-kind">
+          <option value="all">All kinds</option>
+          <option value="story">Story</option>
+          <option value="stranger">Stranger</option>
+          <option value="collectible">Collectibles</option>
+          <option value="activity">Activities</option>
+          <option value="crime">Crime</option>
+          <option value="money">Money</option>
+          <option value="completion">100% Completion</option>
+          <option value="misc">Misc</option>
+        </select>
+      </label>
+      <label>Grade
+        <select id="filter-grade">
+          <option value="all">All grades</option>
+          <option value="platinum">Platinum</option>
+          <option value="gold">Gold</option>
+          <option value="silver">Silver</option>
+          <option value="bronze">Bronze</option>
+        </select>
+      </label>
+      <label class="check"><input type="checkbox" id="filter-missable"> Missable only</label>
+      <label class="check"><input type="checkbox" id="filter-unearned"> Unearned only</label>
+      <label class="check spoiler-check"><input type="checkbox" id="spoiler-toggle" checked> Hide story spoilers</label>
+      <span class="toolbar-actions">
+        <button id="export-btn" type="button">Export JSON</button>
+        <button id="import-btn" type="button">Import JSON</button>
+        <input id="import-file" type="file" accept="application/json,.json" hidden>
+      </span>
     </div>
-    <p class="showing" id="showing"></p>
-    <ol class="trophies" id="rows"></ol>
+    <p class="list-meta" id="list-meta"></p>
+    <div class="tracker-grid">
+      <ol class="trophy-list" id="trophy-list"></ol>
+      <aside class="detail" id="detail" aria-live="polite"></aside>
+    </div>
   </section>
 
-  <section id="view-roadmap" class="view hidden">
-    <h2>The road to the platinum</h2>
-    <p class="lede">Six phases, in order. The story cannot be missed; the side strands and the partner trophies can — finish Phase 2 before the finale, and sweep the missables before you start the last mission.</p>
-    <ol class="timeline" id="phases"></ol>
-    <p class="note">Built from the official trophy descriptions: story chapters and missions in order, collectible counts as the descriptions state them, and the missable flags from each trophy's “when it can be missed” note.</p>
+  <section id="tab-roadmap" class="panel" hidden>
+    <h2>Roadmap to Platinum</h2>
+    <p class="panel-intro">Six phases, in order. The story first — everything in Phase 1 pops on its own — then the stranger strands while they are still open, the missable sweep, collectibles, activities, and finally money and the 100% checklist. PowerPyx puts the whole road at about 200 hours; Phase 6 alone is around 100 of them.</p>
+    <ol class="timeline" id="timeline"></ol>
+    <p class="panel-note">No mission replay: keep a separate save at the start and end of each chapter (PowerPyx suggests ten slots rotated this way). After the story, the 100% checklist appears under Progress &gt; Stats &gt; 100% Completion — and it is lenient, closer to 60% true completion: only 70 of the 80 Challenges, 200 of 277 vehicle models and 100 of 255 animals are needed.</p>
   </section>
 
-  <section id="view-missables" class="view hidden">
-    <h2>Missable trophies — 15 to protect</h2>
-    <p class="lede">The only trophies that can be locked out by story progress or a one-time moment. Everything else can be finished in free roam after the finale. Do this list before the final mission.</p>
-    <ol class="trophies" id="missRows"></ol>
+  <section id="tab-missables" class="panel" hidden>
+    <h2>Missables — 15 trophies to do before they close</h2>
+    <p class="panel-intro">GTA 6 has no mission replay, so a strand or moment left behind can stay behind. These fifteen are flagged from the official descriptions and the cited guides. Do them as they appear; post-story free-roam cannot reopen a closed strand.</p>
+    <div class="warning-box"><strong>One more warning — Positive Mental Attitude.</strong> PowerPyx flags the first meditation as the only missable step in the whole game: in Chapter 1, after the mission Down to Earth, find Lucia at Jason&rsquo;s house in the morning, follow her to the balcony and meditate. Miss it and the 18-spot trophy is at risk. It is not counted among the fifteen above because the other seventeen spots are all reachable later — but the Chapter 1 one is not.</div>
+    <ol class="trophy-list missable-list" id="missable-list"></ol>
   </section>
 
-  <section id="view-collectibles" class="view hidden">
-    <h2>Collectibles &amp; counts</h2>
-    <p class="lede">The five counting trophies, with what the official descriptions ask for. Tick the trophy when its set is complete; use the cited guide's maps for the exact spots.</p>
-    <div class="collect-grid" id="collectGrid"></div>
+  <section id="tab-collectibles" class="panel" hidden>
+    <h2>Collectibles — five sets, five target numbers</h2>
+    <p class="panel-intro">Collectibles are the long grind behind the platinum. Each card below gives the target, what counts toward it, and which trophies it feeds.</p>
+    <div class="collect-grid" id="collect-grid"></div>
+    <p class="panel-note">Also on the 100% checklist: 33 underwater discoveries, 100 Cocaine Flamingos, 15 of the 18 card sets, and studying 100 of 255 animals through binoculars (PowerPyx). Scan everything with WAiNK as you go — a scan is often all a discovery needs.</p>
   </section>
 </main>
 
 <footer>
-  <p>LEONIDA LEDGER is an unofficial, open-source fan guide. Grand Theft Auto and GTA are trademarks of Rockstar Games; no Rockstar logo or official artwork is used here. Trophy names, descriptions and grades are PlayStation's official list. Guides are written in our own words and cite their sources — see each trophy's source line. Works fully offline: no network requests, progress stays in your browser.</p>
-  <p>Sources consulted: PowerPyx, PlayStationTrophies.org, PSNProfiles, TrueTrophies, Exophase — named on every trophy they inform.</p>
+  <p><strong>Sources.</strong> Names, descriptions and grades are the official PlayStation list as published by Exophase and PSNProfiles. Every guide is written in our own words and cites its sources: PowerPyx, PSNProfiles, Exophase, TrueTrophies, PlayStationTrophies.org, Push Square, KeenGamer and GTABase. A source is cited, never copied. Where the guides say a method is still being confirmed, this ledger says so plainly instead of guessing.</p>
+  <p><strong>Offline.</strong> This guide is static files only. It makes no network request at run time, stores your progress only in your own browser, and shows no Rockstar logo or official artwork. Progress is saved automatically; Export downloads it as JSON and Import restores it.</p>
 </footer>
+
 <script type="module" src="app.js"></script>
 </body>
 </html>

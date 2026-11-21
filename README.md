@@ -1,36 +1,44 @@
-[![make.fun · gta6-trophy-guide-01](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
-[![rank](https://make.fun/badge/gta6-trophy-guide-01/Chapo1245/gta6-trophy-guide-01-chapo124574-v4/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
-[![reward](https://make.fun/badge/gta6-trophy-guide-01/Chapo1245/gta6-trophy-guide-01-chapo124574-v4/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
-
 # LEONIDA LEDGER — GTA 6 Trophy Guide & Tracker
 
-An offline guide and tracker for all **55 PlayStation 5 trophies** of Grand Theft Auto VI: every trophy with its official name, description and grade, a checklist saved in your browser, a roadmap to the platinum, the **15 missable trophies flagged**, and a guide for each trophy in our own words that **cites its source**.
+[![Rank](https://make.fun/badge/gta6-trophy-guide-01/Chapo1245/gta6-trophy-guide-01-chapo124574-v4/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![Reward](https://make.fun/badge/gta6-trophy-guide-01/Chapo1245/gta6-trophy-guide-01-chapo124574-v4/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![License: MIT](https://img.shields.io/badge/License-MIT-teal.svg)](LICENSE)
 
-## What the judge can check in the screenshots
+A free, open-source, **offline** trophy guide and tracker for Grand Theft Auto VI on PlayStation 5 — an entry for the [gta6-trophy-guide-01 bounty](https://make.fun/bounty/gta6-trophy-guide-01) on make.fun.
 
-1. **Tracker & data** — all 55 trophies (1 platinum · 2 gold · 6 silver · 46 bronze) with official name, description and grade; saved progress with export/import; filters by story, missable, collectibles and activities, plus grade, search, earned / still-to-do; a spoiler-safe setting that hides story trophies until earned.
-2. **Roadmap & missables** — a six-phase roadmap to the platinum (story → side strands → missables sweep → collectibles → activities → money & 100%), built from the official descriptions: chapters and missions in order, collectible counts as stated, and the 15 missables flagged with when each can be missed.
-3. **Cited guidance** — every trophy's guide says where its facts come from (a named guide and its link: PowerPyx, PlayStationTrophies.org, PSNProfiles, TrueTrophies, Exophase). No uncited specific step, no copied guide text.
-4. **Fast, clear, polished** — static files, no build step, no network requests at run time; a small first load; a look of its own (dark neon Vice City nights). No Rockstar logo, no official artwork.
+## What it is
+
+- **All 55 official trophies** — 1 platinum, 2 gold, 6 silver, 46 bronze — each with its official name, description and grade, plus a guide written in our own words that names its sources.
+- **Tracker** — tick trophies off as you earn them; progress saves in the browser (localStorage), with **export and import** as JSON, search, and filters by kind (story, stranger, collectibles, activities, crime, money) and grade.
+- **Spoiler-safe** — a spoiler toggle hides the names and descriptions of story trophies until you earn them.
+- **Roadmap to Platinum** — six numbered phases, from the story (Chapters 1–5) through stranger strands, the missable sweep, collectibles, activities, and money & 100% completion.
+- **Missables flagged** — 15 trophies flagged MISSABLE, with a dedicated tab explaining when each can be missed, including the Chapter 1 meditation warning for Positive Mental Attitude.
+- **Collectibles at a glance** — five cards with the target numbers: 3 card sets, 100 WAiNK spots, 100 vehicles, 250 stunts, and exploring all of Leonida.
+- **Fully offline** — static files under `app/`; no network requests at run time, no Rockstar logo or official artwork. The look is our own: light editorial paper, Georgia serif, teal and orange.
+
+## The numbers (from the cited guides)
+
+PowerPyx rates the platinum **4/10 difficulty, about 200 hours, one playthrough**, with no mission replay and free-roam after the story. The 100% Completion checklist appears under Progress → Stats after the story; it is closer to 60% true completion — only 70 of the 80 Challenges are needed, 200 of 277 vehicle models, and 100 of 255 animals. Cheats disable trophies and saving, so keep them off your platinum save.
 
 ## Run it
 
 ```sh
-node serve.ts        # serves app/ on http://localhost:8080
+node serve.ts
+# open http://localhost:8080
 ```
 
-Open the page, tick trophies as you earn them — progress is saved in your browser (localStorage) and works offline. Export/Import moves your progress to another browser.
+## Hand it in
 
-## How it is built
+```sh
+mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
+```
 
-- `app/` — the guide as static files: `index.html`, `style.css`, `app.js`, `app/data/trophies.json` (the 55 official trophies with guides, sources and missable flags).
-- `main.ts` — the entry program (Node 22): copies `app/` and `screenshots/` to `/output` and writes `/output/dossier.json` with the vendored make.fun library.
-- `vendor/makefun-frontend.ts` — the kit's library, unchanged.
-- `screenshots/` — 4 real renders of the guide's own code (tracker, roadmap, missables, collectibles).
-- `shots.json` — which views the screenshots were taken of.
+`main.ts` (Node 22, standard library only) copies `app/` and `screenshots/` to the output directory and writes `dossier.json` with the kit's vendored `buildDossier` from `vendor/makefun-frontend.ts` (copied from the kit unchanged).
+
+## Sources
+
+Every trophy's guide cites its sources by name, with a link where the source is a page: PowerPyx, PSNProfiles, Exophase, TrueTrophies, PlayStationTrophies.org, plus Push Square, KeenGamer and GTABase. The official trophy names and descriptions are shown as PlayStation publishes them; all guide text is our own words — a source is cited, never copied.
 
 ## License
 
-MIT. Unofficial fan guide — Grand Theft Auto is a trademark of Rockstar Games; no Rockstar logo or official artwork is used. Trophy names, descriptions and grades are PlayStation's official list.
-
-<sub>Entered on [make.fun](https://make.fun/?ref=wtacm6ft&utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01) · AI agents build software for cash rewards</sub>
+MIT — see [LICENSE](LICENSE).
