@@ -1,22 +1,23 @@
-// VICE NIGHTS — offline GTA 6 trophy tracker. Loads app/data/trophies.json (the 55
-// official trophies with a cited guide each), saves ticks in localStorage, and renders
-// the tracker, the roadmap, the missable list and the collectible counts. No network
-// calls at run time: everything it shows comes from its own files.
-const KEY = 'vice-nights-gta6-progress-v1';
+// LEONIDA LEDGER — offline GTA 6 trophy tracker. Reads app/data/trophies.json
+// (the 55 official trophies, each with a cited guide), keeps ticks in
+// localStorage, and renders the tracker, the six-phase roadmap timeline, the
+// missable list and the collectible counts. It makes no network requests: every
+// word it shows comes from its own files.
+const KEY = 'leonida-ledger-gta6-progress-v1';
 const doc = await (await fetch('data/trophies.json')).json();
 const trophies = doc.trophies;
 
 const ROADMAP = [
-  { title: 'Story first — Chapters 1 to 4 and the finale', body: 'Play the story straight through: Gone Fishing, then Chapters 1, 2, 3 and 4, and the final mission. Every chapter and named-mission trophy here is unmissable, so there is nothing to protect — except the side strands, which open between chapters and can lock out later.', trophies: 'Just Like Paradise, Paradise Lost, T**s Ass Drug Money, Vice City, Baby!, Top Of The World, Ma, Trust, Break the Bank, Family Matters, DWNFALL, Hi-Jacked, Snow Storm, You Gotta Know When to Get Off', warn: '' },
-  { title: 'Side strands and strangers — before the finale', body: 'Finish the five contact finales (Andy, Kenton, Billy, Randy, Tyrone), the 8 stranger mission strands and Bret’s unique-animal hunt while the chapters are still open. These are the missables that hurt most: a strand left for the endgame may simply stop being offered.', trophies: 'Road to Rehabilitation, This Was No Boat Accident, The Lone Rider, Supply & Demand, Spin On This!, Strangers & Freaks, Fair Game', warn: 'MISSABLE — do this phase before the final mission.' },
-  { title: 'Missables sweep — partners, choices and one-time moments', body: 'With a partner beside you, lose a 4-star wanted level together and rob 3 shops back-to-back without losing the heat. Then the choice trophies, the Rhino tank moment, the showroom smash, one illegal operation per gang, and the strange encounter. Each only triggers at its moment.', trophies: 'Hot Together, Retail Therapy, Actions Speak Louder, Bad Luck, I Guess, Challenging Tank, Capital Offense, Pest Control, The Truth Is Out There', warn: 'MISSABLE — 8 trophies that only trigger at their moment.' },
+  { title: 'Story first — Chapters 1 to 4 and the finale', body: 'Play the story straight through: Gone Fishing, then Chapters 1, 2, 3 and 4, and the final mission. Every chapter and named-mission trophy here is unmissable — except the side strands, which open between chapters and can lock out later, so clear them as they appear.', trophies: 'Just Like Paradise, Paradise Lost, T**s Ass Drug Money, Vice City, Baby!, Top Of The World, Ma, Trust, Break the Bank, Family Matters, DWNFALL, Hi-Jacked, Snow Storm, You Gotta Know When to Get Off', warn: '' },
+  { title: 'Side strands and strangers — before the finale', body: 'Finish the five contact finales (Andy, Kenton, Billy, Randy, Tyrone), the 8 stranger mission strands and Bret’s unique-animal hunt while the chapters are still open. A strand left for the endgame may simply stop being offered.', trophies: 'Road to Rehabilitation, This Was No Boat Accident, The Lone Rider, Supply & Demand, Spin On This!, Strangers & Freaks, Fair Game', warn: 'MISSABLE — do this phase before the final mission.' },
+  { title: 'Missables sweep — partners, choices and one-time moments', body: 'With a partner beside you, lose a 4-star wanted level together and rob 3 shops back-to-back without losing the heat. Then the choice trophies, the Rhino tank moment, the showroom smash, one illegal operation per gang, and the strange encounter — each only triggers at its moment.', trophies: 'Hot Together, Retail Therapy, Actions Speak Louder, Bad Luck, I Guess, Challenging Tank, Capital Offense, Pest Control, The Truth Is Out There', warn: 'MISSABLE — 8 trophies that only trigger at their moment.' },
   { title: 'Collectibles and exploration', body: 'Sweep Leonida with the cited guides’ maps: 3 complete card sets, WAiNK at 100 locations, every meditation spot, 100 vehicles discovered, and every region of the state visited. Pair WAiNK and vehicle discovery with the exploration sweep so no trip is wasted.', trophies: 'Don’t Touch My Deck, You WAiNKer!, Positive Mental Attitude, Whip It Good, The Goodtime State', warn: '' },
-  { title: 'Activities and grind', body: 'The counting trophies: 250 stunts, 20 different race wins, a Top Fun drone win at every location, gold at every shooting range challenge, 50 challenges, plus one arcade game, the fishing challenge against Cal and the bowling alley visits. All repeatable, all cumulative — pick them off between story beats or in one grind session.', trophies: 'Cunning Stunts, Earn Cash, Not Kudos, Top Fun, The Shootist, One Last Thing, Master of None, Stick Fiddler, Baited My Tackle, Let’s Go Bowling, Ten Pin', warn: '' },
+  { title: 'Activities and grind', body: 'The counting trophies: 250 stunts, 20 different race wins, a Top Fun drone win at every location, gold at every shooting range challenge, 50 challenges, plus one arcade game, the fishing challenge against Cal and the bowling alley visits. All repeatable, all cumulative.', trophies: 'Cunning Stunts, Earn Cash, Not Kudos, Top Fun, The Shootist, One Last Thing, Master of None, Stick Fiddler, Baited My Tackle, Let’s Go Bowling, Ten Pin', warn: '' },
   { title: 'Money, properties and 100%', body: 'Rob 5 bank vaults and an armored truck, launder $250,000 of Marked Bills, spend $100,000 across the shops, buy every garage property and register 10 vehicles in the Scooter Bros app. That clears the last percent: 100% completion, then the platinum.', trophies: 'Maximum Withdrawal, A Classic Blitz Play, Dime on the Dollar, Treat Yo Self, Little Boxes, On the Spot, A Long Road, Vice Got a Price!', warn: '' },
 ];
 
 const COLLECTIBLES = [
-  { name: 'Collectible Card sets', target: '3 full sets', trophy: 'Don’t Touch My Deck', note: 'Cards hide in shops, interiors and out-of-the-way corners. Work one set at a time with the cited guide’s map.' },
+  { name: 'Collectible Card sets', target: '3 full sets', trophy: "Don't Touch My Deck", note: 'Cards hide in shops, interiors and out-of-the-way corners. Work one set at a time with the cited guide’s map.' },
   { name: 'WAiNK locations', target: '100 locations', trophy: 'You WAiNKer!', note: 'Open WAiNK at every new place you visit — landmarks, beaches, neighbourhoods — and the counter climbs with exploration.' },
   { name: 'Meditation spots', target: 'Every spot', trophy: 'Positive Mental Attitude', note: 'Spots sit at scenic overlooks, beaches and quiet corners of Leonida. Tick them off as you go so the last one is easy to find.' },
   { name: 'Vehicles discovered', target: '100 vehicles', trophy: 'Whip It Good', note: 'Drive or ride each new vehicle and it counts. Variety is the game: scooters to trucks, borrowed or stolen.' },
@@ -30,8 +31,7 @@ let spoilerOn = false;
 const $ = (id) => document.getElementById(id);
 const save = () => localStorage.setItem(KEY, JSON.stringify([...earned]));
 const byId = Object.fromEntries(trophies.map((t) => [t.id, t]));
-
-function gradeLabel(t) { return t.grade.charAt(0).toUpperCase() + t.grade.slice(1); }
+const gradeLabel = (t) => t.grade.charAt(0).toUpperCase() + t.grade.slice(1);
 
 function row(t) {
   const li = document.createElement('li');
@@ -130,16 +130,14 @@ function renderTracker() {
 function renderProgress() {
   const n = earned.size;
   const pct = Math.round((n / trophies.length) * 100);
-  $('ring').style.setProperty('--p', pct);
-  $('ringText').textContent = pct + '%';
-  $('progressLine').textContent = `${n} of ${trophies.length} earned`;
+  $('progressLine').textContent = `${n} of ${trophies.length} earned · ${pct}%`;
   $('barFill').style.width = pct + '%';
-  const counts = ['platinum', 'gold', 'silver', 'bronze'].map((g) => {
-    const tot = trophies.filter((t) => t.grade === g).length;
-    const got = trophies.filter((t) => t.grade === g && earned.has(t.id)).length;
-    return `${got}/${tot} ${g}`;
-  }).join(' · ');
-  $('gradeCounts').textContent = 'Official list: 1 platinum · 2 gold · 6 silver · 46 bronze — ' + counts;
+  $('gradeCounts').textContent = 'Official list: 1 platinum · 2 gold · 6 silver · 46 bronze — ' +
+    ['platinum', 'gold', 'silver', 'bronze'].map((g) => {
+      const tot = trophies.filter((t) => t.grade === g).length;
+      const got = trophies.filter((t) => t.grade === g && earned.has(t.id)).length;
+      return `${got}/${tot} ${g}`;
+    }).join(' · ');
   const nextMiss = trophies.find((t) => t.missable && !earned.has(t.id));
   $('nextUp').textContent = nextMiss
     ? `Next missable to protect: ${nextMiss.name} — ${nextMiss.when}`
@@ -170,8 +168,7 @@ function renderRoadmap() {
 }
 
 function renderMissables() {
-  const list = trophies.filter((t) => t.missable);
-  $('missRows').replaceChildren(...list.map(row));
+  $('missRows').replaceChildren(...trophies.filter((t) => t.missable).map(row));
 }
 
 function renderCollectibles() {

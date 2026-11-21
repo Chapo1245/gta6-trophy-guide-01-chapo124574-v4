@@ -3,38 +3,37 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VICE NIGHTS — GTA 6 Trophy Guide &amp; Tracker</title>
-<meta name="description" content="Offline guide and tracker for all 55 GTA 6 PlayStation 5 trophies: roadmap to the platinum, missable flags, and a cited guide for every trophy.">
+<title>LEONIDA LEDGER — GTA 6 Trophy Guide &amp; Tracker</title>
+<meta name="description" content="Offline guide and tracker for all 55 GTA 6 PlayStation 5 trophies: a roadmap to the platinum, the 15 missable trophies flagged, and a cited guide for every trophy.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="hero">
-  <div class="hero-inner">
-    <p class="kicker">GRAND THEFT AUTO VI &middot; PLAYSTATION 5 &middot; OFFLINE GUIDE</p>
-    <h1>VICE NIGHTS</h1>
-    <p class="sub">Every one of the 55 official trophies, with its official name, description and grade — a tracker that saves your progress, a roadmap to the platinum, the 15 missable trophies flagged, and a guide for each trophy in our own words that cites its source.</p>
-    <div class="progress-wrap">
-      <div class="ring" id="ring" role="img" aria-label="Platinum progress"><span id="ringText">0%</span></div>
-      <div class="progress-text">
-        <p id="progressLine">0 of 55 earned</p>
-        <div class="bar"><div id="barFill"></div></div>
-        <p class="counts" id="gradeCounts"></p>
-        <p class="next" id="nextUp"></p>
-      </div>
+<header class="masthead">
+  <div class="mast-inner">
+    <div class="mast-title">
+      <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; An offline field guide</p>
+      <h1>LEONIDA LEDGER</h1>
+      <p class="sub">All 55 official trophies — name, description and grade — with a tracker that remembers, a roadmap to the platinum, the 15 missable trophies flagged, and a guide for each trophy in our own words, with its source named.</p>
     </div>
-    <nav class="tabs" aria-label="Views">
-      <button type="button" data-view="tracker" class="active">Tracker</button>
-      <button type="button" data-view="roadmap">Roadmap to Platinum</button>
-      <button type="button" data-view="missables">Missables <span class="pill" id="missCount"></span></button>
-      <button type="button" data-view="collectibles">Collectibles</button>
-    </nav>
+    <div class="mast-progress">
+      <p class="big" id="progressLine">0 of 55 earned</p>
+      <div class="bar"><div id="barFill"></div></div>
+      <p class="counts" id="gradeCounts"></p>
+      <p class="next" id="nextUp"></p>
+    </div>
   </div>
+  <nav class="tabs" aria-label="Views">
+    <button type="button" data-view="tracker" class="active">Tracker</button>
+    <button type="button" data-view="roadmap">Roadmap to Platinum</button>
+    <button type="button" data-view="missables">Missables <span class="pill" id="missCount"></span></button>
+    <button type="button" data-view="collectibles">Collectibles</button>
+  </nav>
 </header>
 
 <main>
   <section id="view-tracker" class="view">
     <div class="controls">
-      <label class="search">Search <input id="search" type="search" placeholder="Trophy, mission or keyword…"></label>
+      <label>Search <input id="search" type="search" placeholder="Trophy, mission or keyword…"></label>
       <label>Grade <select id="grade"><option value="all">All grades</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
       <div class="chips" role="group" aria-label="Filter by kind">
         <button type="button" data-kind="all" class="chip active">All</button>
@@ -52,21 +51,20 @@
         <button id="reset" type="button">Reset</button>
       </div>
     </div>
-    <p class="hint">Tick a trophy when you earn it — progress is saved in your browser and works offline. Each trophy shows its official description, its guide in our own words, when it can be missed, and its source.</p>
     <p class="showing" id="showing"></p>
     <ol class="trophies" id="rows"></ol>
   </section>
 
   <section id="view-roadmap" class="view hidden">
-    <h2>Roadmap to the Platinum</h2>
-    <p class="lede">Six phases, in order. The story cannot be missed; the side strands and the partner trophies can — do Phase 2 before the finale, and sweep the missables before you start the last mission.</p>
-    <ol class="phases" id="phases"></ol>
-    <p class="roadmap-note">Built from the official trophy descriptions: story chapters and missions in order, collectible counts as the descriptions state them, and the missable flags from the “when it can be missed” notes on each trophy.</p>
+    <h2>The road to the platinum</h2>
+    <p class="lede">Six phases, in order. The story cannot be missed; the side strands and the partner trophies can — finish Phase 2 before the finale, and sweep the missables before you start the last mission.</p>
+    <ol class="timeline" id="phases"></ol>
+    <p class="note">Built from the official trophy descriptions: story chapters and missions in order, collectible counts as the descriptions state them, and the missable flags from each trophy's “when it can be missed” note.</p>
   </section>
 
   <section id="view-missables" class="view hidden">
     <h2>Missable trophies — 15 to protect</h2>
-    <p class="lede">These are the only trophies that can be locked out by story progress or a one-time moment. Everything else can be finished in free roam after the finale. Do this list before the final mission.</p>
+    <p class="lede">The only trophies that can be locked out by story progress or a one-time moment. Everything else can be finished in free roam after the finale. Do this list before the final mission.</p>
     <ol class="trophies" id="missRows"></ol>
   </section>
 
@@ -78,7 +76,7 @@
 </main>
 
 <footer>
-  <p>VICE NIGHTS is an unofficial, open-source fan guide. Grand Theft Auto and GTA are trademarks of Rockstar Games; no Rockstar logo or official artwork is used here. Trophy names, descriptions and grades are PlayStation's official list. Guides are written in our own words and cite their sources — see each trophy's source line. Works fully offline: no network requests, progress stays in your browser.</p>
+  <p>LEONIDA LEDGER is an unofficial, open-source fan guide. Grand Theft Auto and GTA are trademarks of Rockstar Games; no Rockstar logo or official artwork is used here. Trophy names, descriptions and grades are PlayStation's official list. Guides are written in our own words and cite their sources — see each trophy's source line. Works fully offline: no network requests, progress stays in your browser.</p>
   <p>Sources consulted: PowerPyx, PlayStationTrophies.org, PSNProfiles, TrueTrophies, Exophase — named on every trophy they inform.</p>
 </footer>
 <script type="module" src="app.js"></script>

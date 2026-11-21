@@ -23,7 +23,7 @@ def main():
             for shot in SHOTS:
                 pg.goto('http://localhost:8123' + shot['path'])
                 earned = shot.get('earned', EARNED)
-                pg.evaluate(f"localStorage.setItem('vice-nights-gta6-progress-v1', JSON.stringify({earned}))")
+                pg.evaluate(f"localStorage.setItem('leonida-ledger-gta6-progress-v1', JSON.stringify({earned}))")
                 pg.reload()
                 if shot.get('click'):
                     pg.click(shot['click'])
