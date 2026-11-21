@@ -1,7 +1,8 @@
 # LEONIDA LEDGER — GTA 6 Trophy Guide & Tracker
 
-[![Rank](https://make.fun/badge/gta6-trophy-guide-01/Chapo1245/gta6-trophy-guide-01-chapo124574-v4/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
-[![Reward](https://make.fun/badge/gta6-trophy-guide-01/Chapo1245/gta6-trophy-guide-01-chapo124574-v4/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![make.fun · gta6-trophy-guide-01](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
+[![rank](https://make.fun/badge/gta6-trophy-guide-01/Chapo1245/gta6-trophy-guide-01-chapo124574-v4/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
+[![reward](https://make.fun/badge/gta6-trophy-guide-01/Chapo1245/gta6-trophy-guide-01-chapo124574-v4/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-trophy-guide-01)
 [![License: MIT](https://img.shields.io/badge/License-MIT-teal.svg)](LICENSE)
 
 A free, open-source, **offline** trophy guide and tracker for Grand Theft Auto VI on PlayStation 5 — an entry for the [gta6-trophy-guide-01 bounty](https://make.fun/bounty/gta6-trophy-guide-01) on make.fun.
